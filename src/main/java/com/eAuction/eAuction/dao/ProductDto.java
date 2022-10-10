@@ -1,13 +1,13 @@
 package com.eAuction.eAuction.dao;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
+
 @Entity
 @Table(name = "PRODUCT")
+@Data
 public class ProductDto {
 
     @Id
