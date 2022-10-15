@@ -1,23 +1,29 @@
 package com.eAuction.eAuction.buyer;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RequestMapping(path = "/api/v1/buyer/")
 @RestController
 public class BuyerController {
 
+    @Autowired
+    BuyerService buyerService;
+
     @CrossOrigin
     @PostMapping("/place-bid")
-    public String placeBid(){
-        return "Success";
+    public ResponseEntity<?> placeBid(@Valid @RequestBody NewBidInputDto newBidInputDto){
+        String response = buyerService.createBid(newBidInputDto);
+        return ResponseEntity.ok().body(response);
     }
 
     @CrossOrigin
     @PostMapping("/update-bid")
-    public String updateBid(){
-        return "Success";
+    public ResponseEntity<?> updateBid(@Valid @RequestBody NewBidInputDto newBidInputDto){
+        String response = buyerService.updateBid(newBidInputDto);
+        return ResponseEntity.ok().body(response);
     }
 }

@@ -12,4 +12,6 @@ public interface BidDao extends JpaRepository<BidDto, Integer> {
     List<BidDto> findByProductId(int productId);
 
     int deleteByProductId(int productId);
+
+    BidDto findByProductIdAndCreatedBy(int productId, int createdBy);
 }

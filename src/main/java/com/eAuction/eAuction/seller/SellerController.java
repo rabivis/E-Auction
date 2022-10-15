@@ -17,7 +17,7 @@ public class SellerController {
 
     @CrossOrigin
     @PostMapping("/add-product")
-    public String addProduct( @Valid @RequestBody AddProductDto product){
+    public String addProduct( @Valid @RequestBody AddProductDto product, @RequestHeader("Authorization") String token){
         productService.saveProduct(product);
         return "Success";
     }
