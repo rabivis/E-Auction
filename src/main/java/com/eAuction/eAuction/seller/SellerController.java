@@ -1,7 +1,9 @@
 package com.eAuction.eAuction.seller;
 
+import com.eAuction.eAuction.buyer.NewBidInputDto;
 import com.eAuction.eAuction.dao.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +34,12 @@ public class SellerController {
     @DeleteMapping("/delete")
     public String deleteproduct(@Valid @RequestParam int productId){
         return productService.removeProduct(productId);
+    }
+
+    @CrossOrigin
+    @GetMapping("/product-list")
+    public ResponseEntity<?> showProductList() {
+        List<ProductListDto> response = productService.fetchAllProduct();
+        return ResponseEntity.ok().body(response);
     }
 }

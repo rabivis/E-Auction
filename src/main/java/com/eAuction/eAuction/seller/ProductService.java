@@ -7,6 +7,7 @@ import com.eAuction.eAuction.dao.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -53,5 +54,20 @@ public class ProductService {
          productDao.deleteById(productId);
          bidDao.deleteByProductId(productId);
          return "Success";
+    }
+
+    public List<ProductListDto> fetchAllProduct(){
+        List<ProductDto> productList = productDao.findAll();
+        List<ProductListDto> productListDto = new ArrayList<>();
+        if(productList.size() > 0){
+            for(int i=0; productList.size() > i; i++){
+
+                ProductListDto productListObj = new ProductListDto();
+                productListObj.setLabel(productList.get(i).getProductName());
+                productListObj.setValue(productList.get(i).getId());
+                productListDto.add(productListObj);
+            }
+        }
+        return productListDto;
     }
 }

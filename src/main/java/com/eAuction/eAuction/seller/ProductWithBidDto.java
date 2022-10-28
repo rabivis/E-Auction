@@ -11,3 +11,4 @@ public class ProductWithBidDto {
     private ProductDto product;
     private List<BidDto> bidData;
 }
+
