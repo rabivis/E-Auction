@@ -15,8 +15,8 @@ public class JmsProducer {
 
     public void sendMessage(String message){
         try{
-            System.out.println("Attempting Send message to Topic: "+ topic);
             jmsTemplate.convertAndSend(topic, message);
+            System.out.println("Attempting Send message to Topic: "+ topic);
         } catch(Exception e){
             System.out.println("Recieved Exception during send Message: "+ e);
         }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
+import javax.jms.TextMessage;
 
 @Component
 public class JmsConsumer implements MessageListener {
@@ -14,10 +15,9 @@ public class JmsConsumer implements MessageListener {
     @JmsListener(destination = "${active-mq.topic}")
     public void onMessage(Message message) {
         try{
-            ObjectMessage objectMessage = (ObjectMessage)message;
-            String messageData = objectMessage.toString();
-            //do additional processing
-            System.out.println("Received Message: "+ messageData);
+           TextMessage testMessage = (TextMessage) message;
+           String payload = testMessage.getText();
+            System.out.println("Received payload : "+ payload);
         } catch(Exception e) {
             System.out.println("Received Exception : "+ e);
         }
