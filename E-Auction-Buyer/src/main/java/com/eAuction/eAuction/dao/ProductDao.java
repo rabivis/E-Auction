@@ -2,16 +2,13 @@ package com.eAuction.eAuction.dao;
 
 
 import com.eAuction.eAuction.model.ProductDto;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 
-@EnableMongoRepositories
-@Repository
-public interface ProductDao extends MongoRepository<ProductDto, Integer> {
+
+@EnableScan
+public interface ProductDao extends CrudRepository<ProductDto, Integer> {
 
     ProductDto findById(String id);
 }

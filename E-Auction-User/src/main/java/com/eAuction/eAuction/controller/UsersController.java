@@ -34,8 +34,9 @@ public class UsersController {
     }
 
     @CrossOrigin
-    @PostMapping("login")
+    @PostMapping("/login")
     public LoginResponse login(@Valid @RequestBody LoginInputDto login){
+        System.out.println("user: 35 controller");
         return userService.LoginUser(login);
     }
 }

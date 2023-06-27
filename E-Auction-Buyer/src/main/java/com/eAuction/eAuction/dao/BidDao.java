@@ -2,16 +2,15 @@ package com.eAuction.eAuction.dao;
 
 
 import com.eAuction.eAuction.model.BidDto;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
-@EnableMongoRepositories
-@Repository
-public interface BidDao extends MongoRepository<BidDto, Integer> {
+@EnableScan
+public interface BidDao extends CrudRepository<BidDto, Integer> {
 
     List<BidDto> findByProductId(String productId);
 

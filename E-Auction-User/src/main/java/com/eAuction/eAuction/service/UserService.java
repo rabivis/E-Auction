@@ -51,7 +51,6 @@ public class UserService {
     public LoginResponse LoginUser(LoginInputDto loginData){
         String email = loginData.getEmail();
         String password = generateMD5(loginData.getPassword());
-
         UsersDto user = usersDao.findByEmailAndPassword(email, password);
         LoginResponse loginResponse = new LoginResponse();
         if(user != null){

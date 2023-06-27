@@ -10,7 +10,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import javax.jms.ConnectionFactory;
 import java.util.Arrays;
 
-@Configuration
+//@Configuration
 @EnableJms
 public class ActiveMQConfigConsumer {
 
